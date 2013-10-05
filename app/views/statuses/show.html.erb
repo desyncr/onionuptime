@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Onion:</strong>
+  <%= @status.onion %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @status.status %>
+</p>
+
+<p>
+  <strong>Response:</strong>
+  <%= @status.response %>
+</p>
+
+<p>
+  <strong>Delivery:</strong>
+  <%= @status.delivery %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @status.date %>
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>

@@ -1,0 +1,33 @@
+<h1>Listing onions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @onions.each do |onion| %>
+      <tr>
+        <td><%= onion.title %></td>
+        <td><%= onion.name %></td>
+        <td><%= onion.url %></td>
+        <td><%= onion.description %></td>
+        <td><%= link_to 'Show', onion %></td>
+        <td><%= link_to 'Edit', edit_onion_path(onion) %></td>
+        <td><%= link_to 'Destroy', onion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Onion', new_onion_path %>

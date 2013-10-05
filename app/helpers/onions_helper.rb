@@ -1,0 +1,2 @@
+module OnionsHelper
+end

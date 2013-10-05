@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @onion.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @onion.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @onion.url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @onion.description %>
+</p>
+
+<%= link_to 'Edit', edit_onion_path(@onion) %> |
+<%= link_to 'Back', onions_path %>
