@@ -1,29 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @onion.title %>
+<p class="message good" id="message">
+<%= @onion.statuses.all.any? && @onion.statuses.last.status == 200 ? 'Service is up and running' : 'Derp'%>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @onion.name %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @onion.url %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @onion.description %>
-</p>
-
-<p>
-<% @onion.statuses.each do |s| %>
-    <li><%= s.status %> | <%= s.response.to_s %> | <%= s.delivery.to_s %> | <%= s.date.to_s %></li>
+<% if @onion.statuses.any? %>
+<div style="display:table-row;">
+    <div style="display:table-cell; vertical-align:middle;width:250px">
+        <h2 class="detail">Mean response time</h2>
+        <span class="number">
+            <%= @response %>ms
+        </span>
+        <br>
+        <br>
+        <h2 class="detail">Service availability</h2>
+        <span class="number">
+            <%= @availability %>%
+        </span>
+    </div>
+    <div style="display:table-cell">
+        <img alt="" src="/<%= URI.parse(@onion.url).host + '-response.png' %>">
+    </div>
+</div>
 <% end %>
-</p>
-<%= link_to 'Edit', edit_onion_path(@onion) %> |
-<%= link_to 'Back', onions_path %>

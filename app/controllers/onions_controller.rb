@@ -64,7 +64,11 @@ class OnionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_onion
-      @onion = Onion.find(params[:id])
+      url = "http://#{params[:onion]}.#{params[:format]}/"
+      @onion = Onion.find_by_url(url)
+      @status_count = @onion.statuses.count
+      @availability = ((@onion.statuses.all.map{|s| s = (s.status == 200) ? 1 : 0}.inject(:+)) * 100) / @status_count
+      @response = ((@onion.statuses.all.map{|s| s = s.response}.inject(:+) / @status_count) * 1000).round(2)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

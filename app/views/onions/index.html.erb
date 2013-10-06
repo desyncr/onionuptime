@@ -1,33 +1,26 @@
-<h1>Listing onions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @onions.each do |onion| %>
-      <tr>
-        <td><%= onion.title %></td>
-        <td><%= onion.name %></td>
-        <td><%= onion.url %></td>
-        <td><%= onion.description %></td>
-        <td><%= link_to 'Show', onion %></td>
-        <td><%= link_to 'Edit', edit_onion_path(onion) %></td>
-        <td><%= link_to 'Destroy', onion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<h1>HSU :: Main</h1>
+<div>
+<span style="float:left; width: 250px">
+  <%= Onion.all.count %> Hidden Services listed
 <br>
+<%= Onion.up %> Up / <%= Onion.down %> Down
+</span>
+<span style="float:left">
+  Last update <%= Onion.last_update %>
+</span>
+</div>
 
-<%= link_to 'New Onion', new_onion_path %>
+<br style="clear:both">
+
+<div class="row-fluid marketing">
+  <% 2.times do |i| %>
+  <div class="span6">
+    <% Onion.limit(3).offset(3 * i).each do |o| %>
+      <h4><a href="<%= onion_path URI.parse(o.url).host %>"><%= o.title %></a></h4>
+      <p>Hidden service up and running<p>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+
+
