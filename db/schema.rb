@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006002728) do
+ActiveRecord::Schema.define(version: 20131006045649) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20131006002728) do
   create_table "statuses", force: true do |t|
     t.integer  "onion_id"
     t.integer  "status"
-    t.integer  "response"
-    t.integer  "delivery"
+    t.float    "response"
+    t.float    "delivery"
     t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"

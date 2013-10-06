@@ -6,11 +6,11 @@ namespace :schedule do
   desc "Check hidden service status"
   task check: :environment do
     Onion.all.each do |onion|
-      uri     = URI.parse(onion.url)
-      start   = Time.now
-      ping    = 0
-      finish  = 0
-      status  = 0
+      uri       = URI.parse(onion.url)
+      start     = Time.now
+      ping      = 0
+      delivery  = 0
+      status    = 0
 
       Socksify::debug = true
 
@@ -23,17 +23,14 @@ namespace :schedule do
         Net::HTTP.SOCKSProxy('127.0.0.1', 9050).start(uri.host, uri.port) do |http|
           http.get(uri.path.empty? ? '/' : uri.path)
           status = 200
-          finish = Time.now - start
+          delivery = Time.now - start
         end
 
       rescue Exception => e
         puts e.message
-        ping    = 0
-        status  = 0
-        finish  = 0
       end
 
-      update = onion.statuses.new(:status => status, :response => ping, :delivery => finish, :date => Time.now)
+      update = onion.statuses.new(:status => status, :response => ping, :delivery => delivery, :date => Time.now)
       update.save!
     end
   end
