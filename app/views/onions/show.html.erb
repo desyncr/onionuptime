@@ -20,5 +20,10 @@
   <%= @onion.description %>
 </p>
 
+<p>
+<% @onion.statuses.each do |s| %>
+    <li><%= s.status %></li>
+<% end %>
+</p>
 <%= link_to 'Edit', edit_onion_path(@onion) %> |
 <%= link_to 'Back', onions_path %>

@@ -1,7 +1,7 @@
 class CreateStatuses < ActiveRecord::Migration
   def change
     create_table :statuses do |t|
-      t.integer :onion
+      t.integer :onion_id
       t.integer :status
       t.integer :response
       t.integer :delivery

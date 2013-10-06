@@ -34,6 +34,8 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'delayed_job_active_record'
+gem 'whenever', :require => false
 
 # Use unicorn as the app server
 group :development do

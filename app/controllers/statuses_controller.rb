@@ -14,7 +14,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses/new
   def new
-    @status = Status.new
+    @status = Status.new(onion_id: params[:onion_id])
   end
 
   # GET /statuses/1/edit
@@ -69,6 +69,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:onion, :status, :response, :delivery, :date)
+      params.require(:status).permit(:onion_id, :status, :response, :delivery, :date)
     end
 end
