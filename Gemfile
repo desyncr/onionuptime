@@ -38,6 +38,8 @@ gem 'delayed_job_active_record'
 gem 'whenever', :require => false
 gem 'net-ping'
 gem 'socksify'
+gem 'gruff'
+
 # Use unicorn as the app server
 group :development do
     gem 'unicorn'
@@ -46,6 +48,8 @@ group :development do
     gem 'rspec-rails'
     gem 'sqlite3'
 end
+
+gem 'bootstrap-sass', '~> 2.3.2.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
