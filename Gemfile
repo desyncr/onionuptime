@@ -36,7 +36,8 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'delayed_job_active_record'
 gem 'whenever', :require => false
-
+gem 'net-ping'
+gem 'socksify'
 # Use unicorn as the app server
 group :development do
     gem 'unicorn'

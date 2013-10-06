@@ -19,6 +19,6 @@ set :output, "/tmp/cron_log.log"
 
 # Learn more: http://github.com/javan/whenever
 every 1.minute do
-    runner "Onion.schedule"
+    rake "schedule:check"
 end
 

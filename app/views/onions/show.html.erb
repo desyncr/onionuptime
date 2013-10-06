@@ -22,7 +22,7 @@
 
 <p>
 <% @onion.statuses.each do |s| %>
-    <li><%= s.status %></li>
+    <li><%= s.status %> | <%= s.response.to_s %> | <%= s.delivery.to_s %> | <%= s.date.to_s %></li>
 <% end %>
 </p>
 <%= link_to 'Edit', edit_onion_path(@onion) %> |
